@@ -1,14 +1,17 @@
 name: jd_action
 
 on:
+  # 手动触发
+  workflow_dispatch:
   repository_dispatch:
   release:
     types: published
   # push:
   #   branches:
   #     - master
+  # 定时触发：每天 0 点 UTC 时间
   schedule:
-    - cron: 0 20 * * *
+    - cron: '0 16 * * *'
   watch:
     types: started
     
@@ -42,5 +45,3 @@ jobs:
               with:
                 name: result
                 path: ./*.txt
-
-
